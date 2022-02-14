@@ -3,10 +3,13 @@ import App from './App.vue'
 import "./index.css"
 import router from './router'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import axios from 'axios';
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+Vue.prototype.$axios = axios
 
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue)

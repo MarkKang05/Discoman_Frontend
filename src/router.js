@@ -3,6 +3,8 @@ import VueRouter from "vue-router";
 import Home from "./views/Home";
 import About from "./views/About";
 import Login from "./views/Login";
+import MasterAlbumList from "./views/MasterAlbumList"
+import MasterAlbumDetails from "./views/MasterAlbumDetails"
 
 Vue.use(VueRouter);
 
@@ -20,6 +22,14 @@ const router = new VueRouter({
         {
             path:"/loginPage",
             component: Login
+        },
+        {
+            path:"/masters",
+            component: MasterAlbumList
+        },
+        { 
+            path: '/masters/:id', 
+            component: MasterAlbumDetails
         }
     ]
 });
