@@ -3,8 +3,9 @@ import VueRouter from "vue-router";
 import Home from "./views/Home";
 import About from "./views/About";
 import Login from "./views/Login";
-import MasterAlbumList from "./views/MasterAlbumList"
-import MasterAlbumDetails from "./views/MasterAlbumDetails"
+import MasterAlbumList from "./views/masterAlbum/MasterAlbumList"
+import MasterAlbumDetails from "./views/masterAlbum/MasterAlbumDetails"
+import MasterAlbumForm from "./views/masterAlbum/MasterAlbumForm"
 
 Vue.use(VueRouter);
 
@@ -30,6 +31,10 @@ const router = new VueRouter({
         { 
             path: '/masters/:id', 
             component: MasterAlbumDetails
+        },
+        { 
+            path: '/masterCreate', 
+            component: MasterAlbumForm
         }
     ]
 });
