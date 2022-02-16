@@ -17,7 +17,11 @@
                         {{item.title}}
                     </a>
                 </td>
-                <td>{{item.artist}}</td>
+                <td>
+                    <a :href="'/artists/' + item.artist.id">
+                        {{item.artist.name}}
+                    </a>
+                </td>
                 <td>{{item.genre}}</td>
             </tr>
         </tbody>

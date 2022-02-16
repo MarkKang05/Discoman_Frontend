@@ -57,6 +57,7 @@ export default {
         //     var vm = this;
         //     vm.musics = await vm.$axios.get('http://localhost:8080/musics');
         // },
+        // TODO - select music, artist
         postForm(){
             var vm = this;
             var res_id = null;
@@ -65,28 +66,27 @@ export default {
                 description: vm.description,
                 genre: vm.genre,
                 style: vm.style,
-                images: "",
                 artist: 1,
-                musics:[5,6]
+                musics:[1,2]
             })
             .then(response => {
                 res_id = JSON.stringify(response.data.data.id)
                 console.log(res_id);
-                this.onImageUpload(res_id);
+                this.formData.append("id", res_id)
                 this.startUpload()
             })
 
         },
-        onImageUpload(name){
+        onImageUpload(){
             let file = this.$refs.uploadImage.files[0];
             this.formData = new FormData();
             this.formData.append("file", file)
-            this.formData.append("id", name)
+            alert("onImageUpload")
         },
         startUpload(){
             var vm = this;
             vm.$axios({
-                url: 'http://localhost:8080/file/upload',
+                url: 'http://localhost:8080/masters/image',
                 method: 'POST',
                 data: this.formData,
                 headers: {
