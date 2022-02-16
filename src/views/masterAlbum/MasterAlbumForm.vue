@@ -21,6 +21,11 @@
             <h5>Style</h5>
             <input v-model="style" placeholder="type title">
         </div>
+
+        <select class="form-control" v-model="artist" @change="logging()">
+            <option :key="i" :value="d.id" v-for="(d, i) in artists.data.data">{{d.name}}</option>
+        </select>
+
         <button v-on:click="postForm()">Submit</button>
 
         <br>
@@ -38,6 +43,7 @@ export default {
             description: '',
             genre: '',
             style: '',
+            artist: 1,
 
             response: '',
             formData: null
@@ -49,6 +55,9 @@ export default {
     },
 
     methods: {
+        logging(){
+            console.log(this.artist)
+        },
         getArtists: async function(){
             var vm = this;
             vm.artists = await vm.$axios.get('http://localhost:8080/artists');
@@ -66,7 +75,7 @@ export default {
                 description: vm.description,
                 genre: vm.genre,
                 style: vm.style,
-                artist: 1,
+                artist: vm.artist,
                 musics:[1,2]
             })
             .then(response => {
