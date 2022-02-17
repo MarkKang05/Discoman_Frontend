@@ -83,6 +83,7 @@ export default {
                 console.log(res_id);
                 this.formData.append("id", res_id)
                 this.startUpload()
+                this.$router.push({ path: '/masters' })
             })
 
         },

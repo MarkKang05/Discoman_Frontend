@@ -4,6 +4,7 @@
         <thead>
             <tr>
             <th scope="col">#</th>
+            <th scope="col">Cover</th>
             <th scope="col">Title</th>
             <th scope="col">Artist</th>
             <th scope="col">Genre</th>
@@ -12,6 +13,13 @@
         <tbody>
             <tr v-for="item in albums" v-bind:key="item.id" >
                 <th scope="row">{{item.id}}</th>
+                <td>
+                    <div v-if="!item.images">
+                        <a>no Image</a>
+                    </div>
+                    <img v-else class="object-cover h-10 w-10" :src="require('@/../../../image/masters/'+item.images)"/>
+                    <!-- <a href="#">{{item.images}}</a> -->
+                </td>
                 <td>
                     <a :href="'/masters/' + item.id">
                         {{item.title}}
@@ -40,7 +48,7 @@ export default {
         var vm = this;
         const response = await this.$axios.get('http://localhost:8080/masters');
         vm.albums = response.data.data;
-        // console.log(vm.albums.id);
+        console.log(vm.albums);
         // vm.albums.id
     },
 
