@@ -11,6 +11,28 @@
             {{masterAlbum.description}}
         </h2>
 
+        <div class="bg-blue-600 bg-opacity-50">
+            <h1 class="text-black">Song list</h1>
+
+            <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in masterAlbum.musics" v-bind:key="item.id" >
+                    <th scope="row">{{item.id}}</th>
+                    <td>{{item.name}}</td>
+                    <td>{{item.duration}}</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+
         <div class="bg-red-600 bg-opacity-50">
             <h1 class="text-black">Released Album List!!</h1>
 

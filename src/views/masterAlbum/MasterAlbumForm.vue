@@ -26,6 +26,37 @@
             <option :key="i" :value="d.id" v-for="(d, i) in artists.data.data">{{d.name}}</option>
         </select>
 
+        <div>
+            <h5>set Music</h5>
+            <input v-model="searchMusic" placeholder="search music">
+            <select v-model="selectedMusic" @change="addMusic(selectedMusic)">
+                <option disabled value="">Please select one</option>
+                <option :key="i" :value="d.id" v-for="(d, i) in searchMusicList">{{d.name}}</option> -->
+            </select>
+        </div>
+
+        <div class="bg-blue-600 bg-opacity-50">
+            <span class="text-black">Song list</span>
+
+            <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">title</th>
+                <th scope="col">duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in selectedMusicList" v-bind:key="item.id" >
+                    <th scope="row">{{item.id}}</th>
+                    <th scope="row">{{item.name}}</th>
+                    <th scope="row">{{item.duration}}</th>
+                </tr>
+            </tbody>
+        </table>
+
+        </div>
+
         <button v-on:click="postForm()">Submit</button>
 
         <br>
@@ -43,10 +74,23 @@ export default {
             description: '',
             genre: '',
             style: '',
-            artist: 1,
+            artist: 0,
+            musics: [],
+
+            searchMusic: '',
+            searchMusicList: [],
+            selectedMusic: 0,
+            selectedMusicList: [],
 
             response: '',
             formData: null
+        }
+    },
+
+    watch: {
+        searchMusic(){
+            this.searchMusicList = [];
+            this.getMusicByName(this.searchMusic);
         }
     },
 
@@ -76,7 +120,7 @@ export default {
                 genre: vm.genre,
                 style: vm.style,
                 artist: vm.artist,
-                musics:[1,2]
+                musics: vm.musics
             })
             .then(response => {
                 res_id = JSON.stringify(response.data.data.id)
@@ -106,6 +150,22 @@ export default {
             }).then(response => {
                 console.log(JSON.stringify(response.data));
             })
+        },
+
+        getMusicByName: async function(){
+            var vm = this;
+            var result = await vm.$axios.get('http://localhost:8080/musics/searchByName?name='+this.searchMusic);
+            // console.log(result);
+            vm.searchMusicList = result.data.data;
+        },
+        
+        addMusic: function (id) {
+            var ddd = this.searchMusicList.filter(function(e){
+                return e.id===id;
+            })
+
+            this.musics.push(id) ;
+            this.selectedMusicList.push(ddd[0])
         }
 
     }
