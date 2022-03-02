@@ -1,7 +1,7 @@
 <template>
     <div v-if=!state>
         <div v-if="masterAlbum.images">
-            <img class="object-cover h-48 w-48" :src="require('@/../../../image/masters/'+masterAlbum.images)"/>
+            <img class="object-cover h-48 w-48 mx-auto rounded" :src="require('@/../../../image/masters/'+masterAlbum.images)"/>
         </div>
         <h1 v-else>no Image</h1>
         <h1>
@@ -51,7 +51,7 @@
                 <tr v-for="item in releaseAlbums" v-bind:key="item.id" >
                     <th scope="row">{{item.id}}</th>
                     <td>
-                        <a :href="'/releases/' + masterAlbum.id">{{masterAlbum.title}}</a>
+                        <a :href="'/releases/' + item.id">{{masterAlbum.title}}</a>
                         ({{item.format}})
                     </td>
                     <td>
@@ -68,8 +68,6 @@
         </div>
     </div>
     <h1 v-else>Oh no 😢</h1>
-
-
 </template>
 <script>
 export default {

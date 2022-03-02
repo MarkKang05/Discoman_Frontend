@@ -11,6 +11,8 @@ import MasterAlbumForm from "./views/masterAlbum/MasterAlbumForm"
 import ArtistDetails from "./views/artist/ArtistDetails";
 import CreateArtistForm from "./views/artist/CreateArtistForm";
 
+import ReleaseAlbumDetails from "./views/releaseAlbum/ReleaseAlbumDetails";
+
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -47,6 +49,10 @@ const router = new VueRouter({
         { 
             path: '/artistCreate', 
             component: CreateArtistForm
+        },
+        { 
+            path: '/releases/:id', 
+            component: ReleaseAlbumDetails
         },
     ]
 });

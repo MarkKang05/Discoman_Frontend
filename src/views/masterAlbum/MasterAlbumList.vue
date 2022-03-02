@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="album">
         <table class="table">
         <thead>
             <tr>
@@ -34,11 +34,15 @@
             </tr>
         </tbody>
         </table>
+        <!-- <master-album-item v-bind:album="albums[0]"/> -->
     </div>
 </template>
 
 <script>
+// import MasterAlbumItem from '../../components/MasterAlbumItem.vue';
+
 export default {
+//   components: { MasterAlbumItem: MasterAlbumItem },
     data() {
         return {
             albums: []
@@ -76,3 +80,15 @@ export default {
     //     } 
 }
 </script>
+
+
+<style scoped>
+
+
+    .album {
+        background-color: #e0e0e0e0;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+</style>
