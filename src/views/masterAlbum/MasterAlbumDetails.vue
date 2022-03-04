@@ -1,7 +1,8 @@
 <template>
     <div v-if=!state>
         <div v-if="masterAlbum.images">
-            <img class="object-cover h-48 w-48 mx-auto rounded" :src="require('@/../../../image/masters/'+masterAlbum.images)"/>
+            <img class="object-cover h-48 w-48 mx-auto rounded" 
+                :src="require('@/../../../image/masters/'+masterAlbum.images)"/>
         </div>
         <h1 v-else>no Image</h1>
         <h1>

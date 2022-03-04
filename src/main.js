@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.prototype.$axios = axios
+axios.defaults.withCredentials = true;
 
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue)
