@@ -53,7 +53,8 @@ export default {
                 var email = response.data.data.email;
                 email
                 localStorage.setItem("username", username);
-                this.$router.push({ path: '/masters' })
+                // this.$router.push({ path: '/masters' })
+                this.$router.go(-1)
             }).catch(error => {
                 error
                 console.log("error");
