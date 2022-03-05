@@ -10,7 +10,8 @@
         <b-nav-item href="/masters">MasterAlbumList</b-nav-item>
         <b-nav-item href="/masterCreate">Masterform</b-nav-item>
         <b-nav-item href="/artistCreate">ArtistForm</b-nav-item>
-        <b-nav-item href="#" disabled>Disabled</b-nav-item>
+        <b-nav-item href="/releasesCreate">releaseForm</b-nav-item>
+        <!-- <b-nav-item href="#" disabled>Disabled</b-nav-item> -->
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->

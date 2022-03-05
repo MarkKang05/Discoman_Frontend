@@ -7,6 +7,7 @@ import About from "./views/About";
 import Login from "./views/Login";
 
 import MasterAlbumList from "./views/masterAlbum/MasterAlbumList"
+import MasterAlbumAcceptList from "./views/masterAlbum/MasterAlbumAcceptList"
 import MasterAlbumDetails from "./views/masterAlbum/MasterAlbumDetails"
 import MasterAlbumForm from "./views/masterAlbum/MasterAlbumForm"
 
@@ -14,6 +15,8 @@ import ArtistDetails from "./views/artist/ArtistDetails";
 import CreateArtistForm from "./views/artist/CreateArtistForm";
 
 import ReleaseAlbumDetails from "./views/releaseAlbum/ReleaseAlbumDetails";
+import ReleaseAlbumForm from "./views/releaseAlbum/ReleaseAlbumForm";
+import ReleaseAlbumAcceptList from "./views/releaseAlbum/ReleaseAlbumAcceptList";
 
 // const isAuthenticationMember = (to, from, next) => {
 //     if (localStorage.getItem('access_token') !== null) {
@@ -58,6 +61,10 @@ const router = new VueRouter({
             path:"/masters",
             component: MasterAlbumList
         },
+        {
+            path:"/admin/masters",
+            component: MasterAlbumAcceptList 
+        },
         { 
             path: '/masters/:id', 
             component: MasterAlbumDetails
@@ -76,8 +83,16 @@ const router = new VueRouter({
             component: CreateArtistForm
         },
         { 
+            path: '/admin/releases', 
+            component: ReleaseAlbumAcceptList
+        },
+        { 
             path: '/releases/:id', 
             component: ReleaseAlbumDetails
+        },
+        { 
+            path: '/releasesCreate', 
+            component: ReleaseAlbumForm
         },
     ]
 });
