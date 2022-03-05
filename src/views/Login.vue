@@ -35,7 +35,8 @@ export default {
         return {
             rotate: true,
             email: "",
-            password: ""
+            password: "",
+            username:"testName"
 
         }
     },
@@ -51,9 +52,8 @@ export default {
             ).then(response => {
                 var username = response.data.data.username;
                 var email = response.data.data.email;
-                email
-                localStorage.setItem("username", username);
-                // this.$router.push({ path: '/masters' })
+                this.saveUsername(username);
+                console.log(email);
                 this.$router.go(-1)
             }).catch(error => {
                 error
@@ -61,6 +61,9 @@ export default {
             })
         },
 
+        saveUsername(name) {
+            this.$store.commit('setUsername', name)
+        }
     },
     
 };

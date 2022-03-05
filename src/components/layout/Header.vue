@@ -32,7 +32,7 @@
           <b-button size="sm" class="my-2 my-sm-0" type="submit">Search)</b-button>
         </b-nav-form>
 
-        <b-nav-item active >{{username}}</b-nav-item>
+        <b-nav-item active >{{$store.state.username}}</b-nav-item>
         <b-nav-item active v-on:click="logout()" >logout</b-nav-item>
 
       </b-navbar-nav>
@@ -48,28 +48,30 @@ export default {
     data() {
       return {
         isLogin: false,
-        username: ""
       }
     },
 
-    created() {
-      var username = localStorage.getItem("username");
-      this.username = username;
-
-      if(username){
-        console.log(username);
-        this.isLogin = true;
+    mounted() {
+      // var username = localStorage.getItem("username");
+      // this.username = username;
+      var username = this.$store.state.username;
+      if(username!=""){
+        this.isLogin = true
       }
+
     },
     methods: {
       logout(){
             var vm = this;
             vm.$axios.post('http://localhost:8080/logout');
-            localStorage.removeItem("username");
             // this.$router.push({ path: '/masters' }); //todo:: 리프레쉬까지 해서 네브바 변경
+            this.saveUsername("");
             this.$router.go()
-            
+      },
+      saveUsername(name) {
+          this.$store.commit('setUsername', name)
       }
+
     },  
 }
 </script>
