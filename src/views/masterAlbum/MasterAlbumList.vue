@@ -17,7 +17,7 @@
                     <div v-if="!item.images">
                         <a>no Image</a>
                     </div>
-                    <img v-else class="object-cover h-10 w-10" :src="require('@/../../../image/masters/'+item.images)"/>
+                    <img v-else class="h-14" :src='`https://discoman-bucket.s3.ap-northeast-2.amazonaws.com/${item.images}`' />
                     <!-- <a href="#">{{item.images}}</a> -->
                 </td>
                 <td>
@@ -50,7 +50,7 @@ export default {
     },
     async created(){
         var vm = this;
-        const response = await this.$axios.get('http://localhost:8080/masters');
+        const response = await this.$axios.get('http://localhost:8080/masters', );
         vm.albums = response.data.data;
         console.log(vm.albums);
         // vm.albums.id

@@ -17,12 +17,11 @@
                     <div v-if="!item.images">
                         <a>no Image</a>
                     </div>
-                    <img v-else class="object-cover h-10 w-10" :src="require('@/../../../image/masters/'+item.images)"/>
-                    <!-- <a href="#">{{item.images}}</a> -->
+                    <img v-else class="h-15" :src='`https://discoman-bucket.s3.ap-northeast-2.amazonaws.com/${item.images}`' />
                 </td>
                 <td>
                     <a :href="'/masters/' + item.id">
-                        {{item.title}}
+                        {{item.title}}, {{item.acc}}
                     </a>
                 </td>
                 <td>

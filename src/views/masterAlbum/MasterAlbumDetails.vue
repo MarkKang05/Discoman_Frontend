@@ -1,8 +1,7 @@
 <template>
     <div v-if=!state>
         <div v-if="masterAlbum.images">
-            <img class="object-cover h-48 w-48 mx-auto rounded" 
-                :src="require('@/../../../image/masters/'+masterAlbum.images)"/>
+            <img class="h-48" :src='`https://discoman-bucket.s3.ap-northeast-2.amazonaws.com/${masterAlbum.images}`' />
         </div>
         <h1 v-else>no Image</h1>
         <h1>

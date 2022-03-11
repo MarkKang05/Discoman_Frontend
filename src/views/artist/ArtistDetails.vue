@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-if="artist.image">
-            <img class="object-cover h-48 w-48" :src="require('@/../../../image/artists/'+artist.image)"/>
+            <img class="h-48" :src='`https://discoman-bucket.s3.ap-northeast-2.amazonaws.com/${artist.image}`' />
         </div>
         <h1 v-else>no Image</h1>
 
